@@ -1,66 +1,79 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aventur - Viajes Premium</title>
-  <style>
-    * {margin:0;padding:0;box-sizing:border-box;}
-    body {font-family:'Poppins',sans-serif;background:#fff;color:#222;overflow-x:hidden;scroll-behavior:smooth;}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aventur - Viajes Premium</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+/* GLOBAL */
+* {margin:0;padding:0;box-sizing:border-box;}
+body {font-family:'Montserrat',sans-serif;background:#f0f4f8;color:#222;overflow-x:hidden;scroll-behavior:smooth;}
+a {text-decoration:none;color:inherit;}
+button {cursor:pointer;}
 
-    /* NAVBAR */
-    nav {position:fixed;top:0;left:0;width:100%;display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;background:rgba(255,255,255,0.85);backdrop-filter:blur(10px);z-index:1000;box-shadow:0 4px 20px rgba(0,0,0,0.1);animation:fadeDown 1.2s ease;}
-    nav img {height:50px;transition:transform .3s;}
-    nav img:hover {transform:scale(1.1);}    
-    nav ul {display:flex;gap:2rem;list-style:none;}
-    nav ul li a {text-decoration:none;color:#222;font-weight:600;position:relative;}
-    nav ul li a::after {content:'';position:absolute;bottom:-5px;left:0;width:0;height:2px;background:#0077ff;transition:width .3s;}
-    nav ul li a:hover::after {width:100%;}
+/* NAVBAR */
+nav {position:fixed;top:0;left:0;width:100%;display:flex;justify-content:space-between;align-items:center;padding:1rem 3rem;background:rgba(255,255,255,0.85);backdrop-filter:blur(10px);z-index:1000;box-shadow:0 4px 25px rgba(0,0,0,0.2);transition:all .3s;}
+nav img {height:55px;transition:transform .3s;}
+nav img:hover {transform:scale(1.1) rotate(-2deg);}
+nav ul {display:flex;gap:2rem;list-style:none;}
+nav ul li a {position:relative;font-weight:600;color:#222;transition:color .3s;}
+nav ul li a::after {content:'';position:absolute;bottom:-5px;left:0;width:0;height:2px;background:#0077ff;transition:width .3s;}
+nav ul li a:hover::after {width:100%;}
 
-    /* HERO */
-    .hero {height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:url('https://source.unsplash.com/1600x900/?mountains,travel') center/cover no-repeat;position:relative;overflow:hidden;}
-    .hero::after {content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.4);} 
-    .hero-content {position:relative;z-index:2;color:#fff;animation:fadeUp 2s ease;}
-    .hero h1 {font-size:4.5rem;letter-spacing:3px;animation:glow 3s ease-in-out infinite alternate;}
-    .hero p {font-size:1.5rem;margin-top:1rem;}
-    .hero button {margin-top:2rem;padding:1rem 2rem;font-size:1.2rem;border:none;border-radius:30px;background:#0077ff;color:#fff;cursor:pointer;transition:all .3s;box-shadow:0 5px 15px rgba(0,0,0,0.3);}
-    .hero button:hover {background:#0059b3;transform:translateY(-3px);}
+/* HERO */
+.hero {height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:url('https://source.unsplash.com/1920x1080/?adventure,travel') center/cover no-repeat;position:relative;overflow:hidden;}
+.hero::after {content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.45);}
+.hero-content {position:relative;z-index:2;color:#fff;animation:fadeUp 2s ease;}
+.hero h1 {font-family:'Playfair Display',serif;font-size:5rem;letter-spacing:4px;text-transform:uppercase;text-shadow:0 0 15px #0077ff,0 0 30px #00bbff;animation:glow 3s ease-in-out infinite alternate;}
+.hero p {font-size:1.8rem;margin-top:1rem;}
+.hero button {margin-top:2rem;padding:1rem 2rem;font-size:1.3rem;border:none;border-radius:35px;background:#0077ff;color:#fff;box-shadow:0 8px 20px rgba(0,0,0,0.3);transition:all .3s;}
+.hero button:hover {background:#0059b3;transform:translateY(-5px) scale(1.05);}
 
-    @keyframes fadeDown {from{opacity:0;transform:translateY(-50px);}to{opacity:1;transform:translateY(0);}}
-    @keyframes fadeUp {from{opacity:0;transform:translateY(50px);}to{opacity:1;transform:translateY(0);}}
-    @keyframes glow {from{text-shadow:0 0 10px #0077ff;}to{text-shadow:0 0 30px #00bbff;}}
+@keyframes fadeDown {from{opacity:0;transform:translateY(-50px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeUp {from{opacity:0;transform:translateY(50px);}to{opacity:1;transform:translateY(0);}}
+@keyframes glow {from{text-shadow:0 0 10px #0077ff;}to{text-shadow:0 0 35px #00bbff;}}
 
-    /* SECTIONS */
-    section {padding:6rem 10%;}
-    section h2 {text-align:center;font-size:2.8rem;margin-bottom:2rem;position:relative;animation:fadeUp 1s ease;}
-    section h2::after {content:'';display:block;width:60px;height:4px;background:#0077ff;margin:1rem auto;border-radius:2px;}
-    .section-text {text-align:center;max-width:800px;margin:0 auto 3rem auto;font-size:1.2rem;color:#444;line-height:1.8;animation:fadeUp 1.5s ease;}
+/* SECTIONS */
+section {padding:8rem 10%;}
+section h2 {text-align:center;font-family:'Playfair Display',serif;font-size:3rem;margin-bottom:2rem;position:relative;color:#0077ff;animation:fadeUp 1s ease;}
+section h2::after {content:'';display:block;width:80px;height:4px;background:#00bbff;margin:1rem auto;border-radius:2px;}
+.section-text {text-align:center;max-width:900px;margin:0 auto 4rem auto;font-size:1.3rem;color:#444;line-height:1.8;animation:fadeUp 1.5s ease;}
 
-    .grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;}
-    .card {position:relative;overflow:hidden;border-radius:20px;box-shadow:0 10px 25px rgba(0,0,0,0.15);cursor:pointer;transform:translateY(50px);opacity:0;transition:all 1s ease;}
-    .card img {width:100%;height:100%;object-fit:cover;transition:transform .5s;}
-    .card:hover img {transform:scale(1.1) rotate(1deg);}
-    .card span {position:absolute;bottom:0;left:0;right:0;padding:1rem;color:#fff;font-size:1.5rem;background:linear-gradient(to top,rgba(0,0,0,0.8),transparent);}
+.grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem;}
+.card {position:relative;overflow:hidden;border-radius:25px;box-shadow:0 15px 35px rgba(0,0,0,0.2);cursor:pointer;transform:translateY(50px);opacity:0;transition:all 1s ease;}
+.card img {width:100%;height:100%;object-fit:cover;transition:transform .5s, filter .5s;}
+.card:hover img {transform:scale(1.1) rotate(1deg);filter:brightness(1.1);}
+.card span {position:absolute;bottom:0;left:0;right:0;padding:1.2rem;color:#fff;font-size:1.4rem;font-weight:600;background:linear-gradient(to top,rgba(0,0,0,0.85),transparent);}
 
-    /* CONTACT */
-    .contact {text-align:center;}
-    .contact p {font-size:1.2rem;margin-bottom:1rem;}
-    .contact a {color:#0077ff;font-weight:600;}
+/* CONTACT */
+.contact {text-align:center;}
+.contact p {font-size:1.3rem;margin-bottom:1rem;}
+.contact a {color:#0077ff;font-weight:700;}
 
-    /* COOKIES */
-    .cookies {position:fixed;bottom:0;left:0;width:100%;background:#111;color:#fff;text-align:center;padding:1rem;z-index:2000;animation:slideUp 1s ease;}
-    .cookies button {margin-left:1rem;padding:0.5rem 1rem;border:none;border-radius:20px;background:#0077ff;color:#fff;cursor:pointer;}
-    @keyframes slideUp {from{transform:translateY(100%);}to{transform:translateY(0);}}
+/* COOKIES */
+.cookies {position:fixed;bottom:0;left:0;width:100%;background:#111;color:#fff;text-align:center;padding:1rem;z-index:2000;animation:slideUp 1s ease;}
+.cookies button {margin-left:1rem;padding:0.5rem 1rem;border:none;border-radius:25px;background:#0077ff;color:#fff;transition:all .3s;}
+.cookies button:hover {background:#0059b3;transform:scale(1.05);}
+@keyframes slideUp {from{transform:translateY(100%);}to{transform:translateY(0);}}
 
-    /* FOOTER */
-    footer {background:#111;color:#aaa;text-align:center;padding:2rem 1rem;margin-top:4rem;}
-    footer span {color:#fff;}
+/* FOOTER */
+footer {background:#111;color:#aaa;text-align:center;padding:3rem 1rem;margin-top:4rem;}
+footer span {color:#fff;font-weight:700;}
 
-    /* SCROLL ANIMATIONS */
-    .show {opacity:1 !important;transform:translateY(0) !important;}
-  </style>
+/* SCROLL ANIMATIONS */
+.show {opacity:1 !important;transform:translateY(0) !important;}
+
+/* PARTICLES */
+#particles {position:absolute;top:0;left:0;width:100%;height:100%;z-index:1;pointer-events:none;}
+.particle {position:absolute;width:8px;height:8px;background:#00bbff;border-radius:50%;animation:float 10s linear infinite;opacity:0.7;}
+@keyframes float {0%{transform:translateY(0) translateX(0);}50%{transform:translateY(-200px) translateX(100px);}100%{transform:translateY(0) translateX(200px);}}
+</style>
 </head>
 <body>
+  <!-- PARTICLES -->
+  <div id="particles"></div>
+
   <!-- NAVBAR -->
   <nav>
     <img src="logo.png" alt="Aventur Logo">
@@ -84,29 +97,90 @@
   <!-- EUROPA -->
   <section id="europa">
     <h2>Europa</h2>
-    <p class="section-text">Explora la riqueza cultural, la historia milenaria y la diversidad de paisajes que ofrece Europa. Desde las calles románticas de París hasta las colinas de la Toscana, Aventur te lleva a vivir experiencias inolvidables en cada rincón.</p>
-    <div class="grid">
-      <div class="card"><img src="https://source.unsplash.com/600x400/?paris" alt="Europa"><span>París</span></div>
-      <div class="card"><img src="https://source.unsplash.com/600x400/?rome" alt="Europa"><span>Roma</span></div>
-      <div class="card"><img src="https://source.unsplash.com/600x400/?london" alt="Europa"><span>Londres</span></div>
-    </div>
+    <p class="section-text">Explora más de 100 destinos en Europa, desde ciudades emblemáticas hasta rincones ocultos llenos de historia y cultura. Aventur hace que cada viaje sea único e inolvidable, con itinerarios personalizados y experiencias locales auténticas.</p>
+    <div class="grid" id="europa-grid"></div>
   </section>
 
   <!-- AMERICA -->
   <section id="america">
     <h2>América</h2>
-    <p class="section-text">Desde los rascacielos de Nueva York hasta la majestuosidad de Machu Picchu, América ofrece contrastes únicos. Aventur diseña tus viajes para que sientas la emoción, la energía y la magia del continente americano.</p>
-    <div class="grid">
-      <div class="card"><img src="https://source.unsplash.com/600x400/?newyork" alt="América"><span>New York</span></div>
-      <div class="card"><img src="https://source.unsplash.com/600x400/?rio" alt="América"><span>Río de Janeiro</span></div>
-      <div class="card"><img src="https://source.unsplash.com/600x400/?machupicchu" alt="América"><span>Machu Picchu</span></div>
-    </div>
+    <p class="section-text">Más de 100 destinos en América te esperan, desde paisajes naturales hasta vibrantes ciudades. Aventur organiza tus viajes de manera que vivas la aventura y la cultura como nunca antes.</p>
+    <div class="grid" id="america-grid"></div>
   </section>
 
   <!-- EXPERIENCIAS -->
   <section id="experiencias">
     <h2>Experiencias Únicas</h2>
-    <p class="section-text">No solo viajamos, vivimos historias. Desde compartir una comida en una sidrería vasca hasta ascender a las montañas más imponentes, Aventur transforma tus vacaciones en relatos que contarás toda la vida.</p>
-    <div class="grid">
-      <div class="card"><img src="https://source.unsplash.com/600x400/?wine,basque" alt="Sidrería"><span>Sidrerías vascas</span></div>
-      <div class="card"><img src="https://source.unsplash.com/600x400/?mountain,hike" alt="Montaña"><span>Rutas de montaña</span></div>
+    <p class="section-text">Más de 100 experiencias exclusivas, incluyendo gastronomía, deportes, aventuras extremas, actividades culturales y mucho más. Cada experiencia está diseñada para crear recuerdos inolvidables.</p>
+    <div class="grid" id="experiencias-grid"></div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="contact">
+    <h2>Contacto</h2>
+    <p class="section-text">¿Listo para tu próxima aventura? Escríbenos y diseñaremos tu viaje perfecto por Europa y América con la esencia vizcaína.</p>
+    <p>Correo: <a href="mailto:aurora_aventur@gmail.com">aurora_aventur@gmail.com</a></p>
+  </section>
+
+  <!-- COOKIES -->
+  <div class="cookies" id="cookies">
+    Usamos cookies para mejorar tu experiencia en Aventur.
+    <button onclick="acceptCookies()">Aceptar</button>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© <span>Aventur 2025</span> – Todos los derechos reservados</p>
+  </footer>
+
+  <script>
+    // Scroll animation
+    const cards = [];
+    const europaGrid = document.getElementById('europa-grid');
+    const americaGrid = document.getElementById('america-grid');
+    const experienciasGrid = document.getElementById('experiencias-grid');
+
+    function generateCards(grid, prefix, count) {
+      for(let i=1;i<=count;i++){
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `<img src='https://source.unsplash.com/400x300/?${prefix},${i}' alt='${prefix} ${i}'><span>${prefix} ${i}</span>`;
+        grid.appendChild(card);
+        cards.push(card);
+      }
+    }
+
+    generateCards(europaGrid, 'Europa', 100);
+    generateCards(americaGrid, 'América', 100);
+    generateCards(experienciasGrid, 'Experiencia', 100);
+
+    window.addEventListener('scroll',()=>{
+      const trigger = window.innerHeight*0.85;
+      cards.forEach(c=>{
+        const rect = c.getBoundingClientRect();
+        if(rect.top<trigger){c.classList.add('show');}
+      });
+    });
+
+    function scrollToSection(id){
+      document.getElementById(id).scrollIntoView({behavior:'smooth'});
+    }
+
+    function acceptCookies(){
+      document.getElementById('cookies').style.display='none';
+    }
+
+    // Particle animation
+    const particlesContainer = document.getElementById('particles');
+    for(let i=0;i<50;i++){
+      const p = document.createElement('div');
+      p.className='particle';
+      p.style.left = Math.random()*100+'%';
+      p.style.top = Math.random()*100+'%';
+      p.style.width = p.style.height = (5+Math.random()*5)+'px';
+      p.style.animationDuration = (5+Math.random()*10)+'s';
+      particlesContainer.appendChild(p);
+    }
+  </script>
+</body>
+</html>
