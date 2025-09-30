@@ -12,6 +12,39 @@ body {font-family:'Montserrat',sans-serif;background:#f0f4f8;color:#222;overflow
 a {text-decoration:none;color:inherit;}
 button {cursor:pointer;}
 
+/* OVERLAY DESARROLLO */
+#dev-overlay {
+  position:fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  background:rgba(0,0,0,0.9);
+  color:#fff;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  z-index:3000;
+}
+#dev-overlay h1 {
+  font-size:2.5rem;
+  margin-bottom:1.5rem;
+}
+#dev-overlay button {
+  padding:1rem 2rem;
+  font-size:1.2rem;
+  border:none;
+  border-radius:30px;
+  background:#0077ff;
+  color:#fff;
+  box-shadow:0 6px 15px rgba(0,0,0,0.3);
+  transition:all .3s;
+}
+#dev-overlay button:hover {
+  background:#0059b3;
+  transform:scale(1.05);
+}
+
 /* NAVBAR */
 nav {position:fixed;top:0;left:0;width:100%;display:flex;justify-content:space-between;align-items:center;padding:1rem 3rem;background:rgba(255,255,255,0.85);backdrop-filter:blur(10px);z-index:1000;box-shadow:0 4px 25px rgba(0,0,0,0.2);transition:all .3s;}
 nav img {height:55px;transition:transform .3s;}
@@ -30,7 +63,6 @@ nav ul li a:hover::after {width:100%;}
 .hero button {margin-top:2rem;padding:1rem 2rem;font-size:1.3rem;border:none;border-radius:35px;background:#0077ff;color:#fff;box-shadow:0 8px 20px rgba(0,0,0,0.3);transition:all .3s;}
 .hero button:hover {background:#0059b3;transform:translateY(-5px) scale(1.05);}
 
-@keyframes fadeDown {from{opacity:0;transform:translateY(-50px);}to{opacity:1;transform:translateY(0);}}
 @keyframes fadeUp {from{opacity:0;transform:translateY(50px);}to{opacity:1;transform:translateY(0);}}
 @keyframes glow {from{text-shadow:0 0 10px #0077ff;}to{text-shadow:0 0 35px #00bbff;}}
 
@@ -71,6 +103,12 @@ footer span {color:#fff;font-weight:700;}
 </style>
 </head>
 <body>
+  <!-- OVERLAY DESARROLLO -->
+  <div id="dev-overlay">
+    <h1>🚧 Página web en desarrollo 🚧</h1>
+    <button onclick="enterSite()">Entrar</button>
+  </div>
+
   <!-- PARTICLES -->
   <div id="particles"></div>
 
@@ -141,27 +179,27 @@ footer span {color:#fff;font-weight:700;}
 
     // Arrays de imágenes fijas
     const europaImgs = [
-      "https://upload.wikimedia.org/wikipedia/commons/e/e6/Eiffel_Tower_Paris_2014.jpg",
-      "https://upload.wikimedia.org/wikipedia/commons/3/3a/Colosseum_in_Rome%2C_Italy_-_April_2007.jpg",
-      "https://upload.wikimedia.org/wikipedia/commons/3/3e/Big_Ben_2012.jpg",
-      "https://upload.wikimedia.org/wikipedia/commons/f/f4/Sagrada_Familia_01.jpg",
-      "https://upload.wikimedia.org/wikipedia/commons/7/7d/Prague_as_seen_from_Prague_Castle_2016.jpg"
+      "https://unviajecreativo.com/wp-content/uploads/2022/06/Paises-mas-bonitos-de-Europa-que-visitar-1.jpg",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5fgMlSZPQUNpHoIq2wK9WJyW71n6WsiOJMw&s",
+      "https://hips.hearstapps.com/hmg-prod/images/colmar-1649168611.jpg",
+      "https://elviajerofeliz.com/wp-content/uploads/2019/09/Paises-1-1-min.jpg",
+      "https://estaticos-cdn.prensaiberica.es/clip/1f427951-5182-4305-aa39-fc32a2314908_woman-libre-1200_default_0.jpg"
     ];
 
     const americaImgs = [
-      "https://upload.wikimedia.org/wikipedia/commons/4/4d/New_York_City_skyline_from_Hoboken%2C_NJ.jpg",
-      "https://upload.wikimedia.org/wikipedia/commons/e/e1/Machu_Picchu%2C_Peru.jpg",
-      "https://upload.wikimedia.org/wikipedia/commons/8/8a/Cristo_Redentor_-_Rio.jpg",
-      "https://upload.wikimedia.org/wikipedia/commons/3/3f/Grand_Canyon_view_from_Pima_Point_2010.jpg",
-      "https://upload.wikimedia.org/wikipedia/commons/1/10/Chichen_Itza_3.jpg"
+      "https://cdn1.matadornetwork.com/blogs/2/2019/11/shutterstock_77085319.jpg",
+      "https://etheriamagazine.com/wp-content/uploads/2021/10/paisajes-america-latina-iguazu.jpg",
+      "https://cdn1.matadornetwork.com/blogs/2/2018/01/shutterstock_610478156.jpg",
+      "https://res.cloudinary.com/worldpackers/image/upload/c_limit,f_auto,q_auto,w_1140/pxy0cybhdgcnhodldtwd",
+      "https://plus.unsplash.com/premium_photo-1661954654458-c673671d4a08?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bmV3JTIweW9yayUyMGNpdHl8ZW58MHx8MHx8fDA%3D"
     ];
 
     const experienciaImgs = [
-      "https://source.unsplash.com/400x300/?adventure",
-      "https://source.unsplash.com/400x300/?nature",
-      "https://source.unsplash.com/400x300/?extreme-sports",
-      "https://source.unsplash.com/400x300/?culture",
-      "https://source.unsplash.com/400x300/?food"
+      "https://blackpepper.travel/cache/2023-12/viajes-alaska-blackpepper-0093-galeria-2x-1181x786.jpg",
+      "https://media.istockphoto.com/id/904172104/es/foto/hemos-dicho-todo-este-camino-me-siento-orgulloso.jpg?s=612x612&w=0&k=20&c=YEWah9Z99mfdsH5PWzwBH818A_ampo2Q_tggeUST-yc=",
+      "https://media.istockphoto.com/id/635980254/es/foto/rice-terraces-en-jap%C3%B3n.jpg?s=612x612&w=0&k=20&c=txRbZ8XgktKXo0IQm8w47XB4iv11sW4y4B36BeZokcQ=",
+      "https://www.discoverwalks.com/blog/wp-content/uploads/2022/07/avenue_des_champs-elysees_from_the_arc_de_triomphe_paris_8_december_2014.jpg",
+      "https://content-viajes.nationalgeographic.com.es/medio/2024/03/13/praga_d488303f_628365610_240313121444_1200x600.jpg"
     ];
 
     function generateCards(grid, prefix, imgs) {
@@ -205,6 +243,11 @@ footer span {color:#fff;font-weight:700;}
       p.style.width = p.style.height = (5+Math.random()*5)+'px';
       p.style.animationDuration = (5+Math.random()*10)+'s';
       particlesContainer.appendChild(p);
+    }
+
+    // Entrar en la web
+    function enterSite(){
+      document.getElementById('dev-overlay').style.display='none';
     }
   </script>
 </body>
