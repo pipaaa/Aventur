@@ -22,7 +22,7 @@ nav ul li a::after {content:'';position:absolute;bottom:-5px;left:0;width:0;heig
 nav ul li a:hover::after {width:100%;}
 
 /* HERO */
-.hero {height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:url('https://source.unsplash.com/1920x1080/?adventure,travel') center/cover no-repeat;position:relative;overflow:hidden;}
+.hero {height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:url('https://source.unsplash.com/1920x1080/?travel,landscape') center/cover no-repeat;position:relative;overflow:hidden;}
 .hero::after {content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.45);}
 .hero-content {position:relative;z-index:2;color:#fff;animation:fadeUp 2s ease;}
 .hero h1 {font-family:'Playfair Display',serif;font-size:5rem;letter-spacing:4px;text-transform:uppercase;text-shadow:0 0 15px #0077ff,0 0 30px #00bbff;animation:glow 3s ease-in-out infinite alternate;}
@@ -97,28 +97,28 @@ footer span {color:#fff;font-weight:700;}
   <!-- EUROPA -->
   <section id="europa">
     <h2>Europa</h2>
-    <p class="section-text">Explora más de 100 destinos en Europa, desde ciudades emblemáticas hasta rincones ocultos llenos de historia y cultura. Aventur hace que cada viaje sea único e inolvidable, con itinerarios personalizados y experiencias locales auténticas.</p>
+    <p class="section-text">Explora más de 100 destinos en Europa, desde ciudades emblemáticas hasta rincones ocultos llenos de historia y cultura.</p>
     <div class="grid" id="europa-grid"></div>
   </section>
 
   <!-- AMERICA -->
   <section id="america">
     <h2>América</h2>
-    <p class="section-text">Más de 100 destinos en América te esperan, desde paisajes naturales hasta vibrantes ciudades. Aventur organiza tus viajes de manera que vivas la aventura y la cultura como nunca antes.</p>
+    <p class="section-text">Más de 100 destinos en América te esperan, desde paisajes naturales hasta vibrantes ciudades.</p>
     <div class="grid" id="america-grid"></div>
   </section>
 
   <!-- EXPERIENCIAS -->
   <section id="experiencias">
     <h2>Experiencias Únicas</h2>
-    <p class="section-text">Más de 100 experiencias exclusivas, incluyendo gastronomía, deportes, aventuras extremas, actividades culturales y mucho más. Cada experiencia está diseñada para crear recuerdos inolvidables.</p>
+    <p class="section-text">Más de 100 experiencias exclusivas: gastronomía, deportes, aventuras extremas y cultura.</p>
     <div class="grid" id="experiencias-grid"></div>
   </section>
 
   <!-- CONTACTO -->
   <section id="contacto" class="contact">
     <h2>Contacto</h2>
-    <p class="section-text">¿Listo para tu próxima aventura? Escríbenos y diseñaremos tu viaje perfecto por Europa y América con la esencia vizcaína.</p>
+    <p class="section-text">¿Listo para tu próxima aventura? Escríbenos y diseñaremos tu viaje perfecto.</p>
     <p>Correo: <a href="mailto:aurora_aventur@gmail.com">aurora_aventur@gmail.com</a></p>
   </section>
 
@@ -134,26 +134,51 @@ footer span {color:#fff;font-weight:700;}
   </footer>
 
   <script>
-    // Scroll animation
     const cards = [];
     const europaGrid = document.getElementById('europa-grid');
     const americaGrid = document.getElementById('america-grid');
     const experienciasGrid = document.getElementById('experiencias-grid');
 
-    function generateCards(grid, prefix, count) {
-      for(let i=1;i<=count;i++){
+    // Arrays de imágenes fijas
+    const europaImgs = [
+      "https://upload.wikimedia.org/wikipedia/commons/e/e6/Eiffel_Tower_Paris_2014.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/3/3a/Colosseum_in_Rome%2C_Italy_-_April_2007.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/3/3e/Big_Ben_2012.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/f/f4/Sagrada_Familia_01.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/7/7d/Prague_as_seen_from_Prague_Castle_2016.jpg"
+    ];
+
+    const americaImgs = [
+      "https://upload.wikimedia.org/wikipedia/commons/4/4d/New_York_City_skyline_from_Hoboken%2C_NJ.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/e/e1/Machu_Picchu%2C_Peru.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/8/8a/Cristo_Redentor_-_Rio.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/3/3f/Grand_Canyon_view_from_Pima_Point_2010.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/1/10/Chichen_Itza_3.jpg"
+    ];
+
+    const experienciaImgs = [
+      "https://source.unsplash.com/400x300/?adventure",
+      "https://source.unsplash.com/400x300/?nature",
+      "https://source.unsplash.com/400x300/?extreme-sports",
+      "https://source.unsplash.com/400x300/?culture",
+      "https://source.unsplash.com/400x300/?food"
+    ];
+
+    function generateCards(grid, prefix, imgs) {
+      imgs.forEach((url, i) => {
         const card = document.createElement('div');
         card.className = 'card';
-        card.innerHTML = `<img src='https://source.unsplash.com/400x300/?${prefix},${i}' alt='${prefix} ${i}'><span>${prefix} ${i}</span>`;
+        card.innerHTML = `<img src='${url}' alt='${prefix} ${i+1}'><span>${prefix} ${i+1}</span>`;
         grid.appendChild(card);
         cards.push(card);
-      }
+      });
     }
 
-    generateCards(europaGrid, 'Europa', 100);
-    generateCards(americaGrid, 'América', 100);
-    generateCards(experienciasGrid, 'Experiencia', 100);
+    generateCards(europaGrid, 'Europa', europaImgs);
+    generateCards(americaGrid, 'América', americaImgs);
+    generateCards(experienciasGrid, 'Experiencia', experienciaImgs);
 
+    // Scroll animation
     window.addEventListener('scroll',()=>{
       const trigger = window.innerHeight*0.85;
       cards.forEach(c=>{
