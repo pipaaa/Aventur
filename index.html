@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aventur - Viajes Premium</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    * {margin:0;padding:0;box-sizing:border-box;}
+    body {font-family:'Poppins',sans-serif;background:#fff;color:#222;overflow-x:hidden;}
+
+    /* NAVBAR */
+    nav {position:fixed;top:0;left:0;width:100%;display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;background:rgba(255,255,255,0.7);backdrop-filter:blur(10px);z-index:1000;}
+    nav img {height:50px;}
+    nav ul {display:flex;gap:2rem;list-style:none;}
+    nav ul li a {text-decoration:none;color:#222;font-weight:600;transition:color .3s;}
+    nav ul li a:hover {color:#0077ff;}
+
+    /* HERO */
+    .hero {height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:url('https://source.unsplash.com/1600x900/?mountains,travel') center/cover no-repeat;position:relative;}
+    .hero::after {content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.4);}
+    .hero-content {position:relative;z-index:2;color:#fff;}
+    .hero h1 {font-size:4rem;animation:fadeDown 2s ease;}
+    .hero p {font-size:1.5rem;margin-top:1rem;animation:fadeUp 2s ease;}
+    .hero button {margin-top:2rem;padding:1rem 2rem;font-size:1.2rem;border:none;border-radius:30px;background:#0077ff;color:#fff;cursor:pointer;transition:background .3s;}
+    .hero button:hover {background:#0059b3;}
+
+    @keyframes fadeDown {from{opacity:0;transform:translateY(-50px);}to{opacity:1;transform:translateY(0);}}
+    @keyframes fadeUp {from{opacity:0;transform:translateY(50px);}to{opacity:1;transform:translateY(0);}}
+
+    /* SECTIONS */
+    section {padding:6rem 10%;}
+    section h2 {text-align:center;font-size:2.5rem;margin-bottom:3rem;position:relative;}
+    section h2::after {content:'';display:block;width:60px;height:4px;background:#0077ff;margin:1rem auto;border-radius:2px;}
+    .grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;}
+    .card {position:relative;overflow:hidden;border-radius:20px;box-shadow:0 10px 20px rgba(0,0,0,0.15);cursor:pointer;}
+    .card img {width:100%;height:100%;object-fit:cover;transition:transform .5s;}
+    .card:hover img {transform:scale(1.1);}
+    .card span {position:absolute;bottom:0;left:0;right:0;padding:1rem;color:#fff;font-size:1.5rem;background:linear-gradient(to top,rgba(0,0,0,0.7),transparent);}
+
+    /* CONTACT */
+    .contact {text-align:center;}
+    .contact p {font-size:1.2rem;margin-bottom:1rem;}
+    .contact a {color:#0077ff;font-weight:600;}
+
+    /* COOKIES */
+    .cookies {position:fixed;bottom:0;left:0;width:100%;background:#111;color:#fff;text-align:center;padding:1rem;z-index:2000;animation:slideUp 1s ease;}
+    .cookies button {margin-left:1rem;padding:0.5rem 1rem;border:none;border-radius:20px;background:#0077ff;color:#fff;cursor:pointer;}
+    @keyframes slideUp {from{transform:translateY(100%);}to{transform:translateY(0);}}
+
+    /* FOOTER */
+    footer {background:#111;color:#aaa;text-align:center;padding:2rem 1rem;margin-top:4rem;}
+    footer span {color:#fff;}
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav>
+    <img src="logo.png" alt="Aventur Logo">
+    <ul>
+      <li><a href="#europa">Europa</a></li>
+      <li><a href="#america">América</a></li>
+      <li><a href="#experiencias">Experiencias</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Aventur</h1>
+      <p>Descubre Europa y América con alma vizcaína</p>
+      <button onclick="scrollToSection('europa')">Explorar ahora</button>
+    </div>
+  </section>
+
+  <!-- EUROPA -->
+  <section id="europa">
+    <h2>Europa</h2>
+    <div class="grid">
+      <div class="card"><img src="https://source.unsplash.com/600x400/?paris" alt="Europa"><span>París</span></div>
+      <div class="card"><img src="https://source.unsplash.com/600x400/?rome" alt="Europa"><span>Roma</span></div>
+      <div class="card"><img src="https://source.unsplash.com/600x400/?london" alt="Europa"><span>Londres</span></div>
+    </div>
+  </section>
+
+  <!-- AMERICA -->
+  <section id="america">
+    <h2>América</h2>
+    <div class="grid">
+      <div class="card"><img src="https://source.unsplash.com/600x400/?newyork" alt="América"><span>New York</span></div>
+      <div class="card"><img src="https://source.unsplash.com/600x400/?rio" alt="América"><span>Río de Janeiro</span></div>
+      <div class="card"><img src="https://source.unsplash.com/600x400/?machupicchu" alt="América"><span>Machu Picchu</span></div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCIAS -->
+  <section id="experiencias">
+    <h2>Experiencias Únicas</h2>
+    <div class="grid">
+      <div class="card"><img src="https://source.unsplash.com/600x400/?wine,basque" alt="Sidrería"><span>Sidrerías vascas</span></div>
+      <div class="card"><img src="https://source.unsplash.com/600x400/?mountain,hike" alt="Montaña"><span>Rutas de montaña</span></div>
+      <div class="card"><img src="https://source.unsplash.com/600x400/?food,basque" alt="Gastronomía"><span>Gastronomía auténtica</span></div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="contact">
+    <h2>Contacto</h2>
+    <p>¿Listo para tu próxima aventura?</p>
+    <p>Escríbenos: <a href="mailto:aurora_aventur@gmail.com">aurora_aventur@gmail.com</a></p>
+  </section>
+
+  <!-- COOKIES -->
+  <div class="cookies" id="cookies">
+    Usamos cookies para mejorar tu experiencia en Aventur.
+    <button onclick="acceptCookies()">Aceptar</button>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© <span>Aventur 2025</span> – Todos los derechos reservados</p>
+  </footer>
+
+  <script>
+    function scrollToSection(id){
+      document.getElementById(id).scrollIntoView({behavior:'smooth'});
+    }
+    function acceptCookies(){
+      document.getElementById('cookies').style.display='none';
+    }
+
+    // Animación scroll reveal
+    const sections=document.querySelectorAll('section');
+    window.addEventListener('scroll',()=>{
+      const trigger=window.innerHeight*0.85;
+      sections.forEach(sec=>{
+        const rect=sec.getBoundingClientRect();
+        if(rect.top<trigger){sec.style.opacity=1;sec.style.transform='translateY(0)';}
+      });
+    });
+    sections.forEach(sec=>{sec.style.opacity=0;sec.style.transform='translateY(50px)';sec.style.transition='all 1s ease';});
+  </script>
+</body>
+</html>
