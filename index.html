@@ -4,39 +4,43 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Aventur - Viajes Premium</title>
-  <link rel="stylesheet" href="styles.css">
   <style>
     * {margin:0;padding:0;box-sizing:border-box;}
-    body {font-family:'Poppins',sans-serif;background:#fff;color:#222;overflow-x:hidden;}
+    body {font-family:'Poppins',sans-serif;background:#fff;color:#222;overflow-x:hidden;scroll-behavior:smooth;}
 
     /* NAVBAR */
-    nav {position:fixed;top:0;left:0;width:100%;display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;background:rgba(255,255,255,0.7);backdrop-filter:blur(10px);z-index:1000;}
-    nav img {height:50px;}
+    nav {position:fixed;top:0;left:0;width:100%;display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;background:rgba(255,255,255,0.85);backdrop-filter:blur(10px);z-index:1000;box-shadow:0 4px 20px rgba(0,0,0,0.1);animation:fadeDown 1.2s ease;}
+    nav img {height:50px;transition:transform .3s;}
+    nav img:hover {transform:scale(1.1);}    
     nav ul {display:flex;gap:2rem;list-style:none;}
-    nav ul li a {text-decoration:none;color:#222;font-weight:600;transition:color .3s;}
-    nav ul li a:hover {color:#0077ff;}
+    nav ul li a {text-decoration:none;color:#222;font-weight:600;position:relative;}
+    nav ul li a::after {content:'';position:absolute;bottom:-5px;left:0;width:0;height:2px;background:#0077ff;transition:width .3s;}
+    nav ul li a:hover::after {width:100%;}
 
     /* HERO */
-    .hero {height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:url('https://source.unsplash.com/1600x900/?mountains,travel') center/cover no-repeat;position:relative;}
-    .hero::after {content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.4);}
-    .hero-content {position:relative;z-index:2;color:#fff;}
-    .hero h1 {font-size:4rem;animation:fadeDown 2s ease;}
-    .hero p {font-size:1.5rem;margin-top:1rem;animation:fadeUp 2s ease;}
-    .hero button {margin-top:2rem;padding:1rem 2rem;font-size:1.2rem;border:none;border-radius:30px;background:#0077ff;color:#fff;cursor:pointer;transition:background .3s;}
-    .hero button:hover {background:#0059b3;}
+    .hero {height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:url('https://source.unsplash.com/1600x900/?mountains,travel') center/cover no-repeat;position:relative;overflow:hidden;}
+    .hero::after {content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.4);} 
+    .hero-content {position:relative;z-index:2;color:#fff;animation:fadeUp 2s ease;}
+    .hero h1 {font-size:4.5rem;letter-spacing:3px;animation:glow 3s ease-in-out infinite alternate;}
+    .hero p {font-size:1.5rem;margin-top:1rem;}
+    .hero button {margin-top:2rem;padding:1rem 2rem;font-size:1.2rem;border:none;border-radius:30px;background:#0077ff;color:#fff;cursor:pointer;transition:all .3s;box-shadow:0 5px 15px rgba(0,0,0,0.3);}
+    .hero button:hover {background:#0059b3;transform:translateY(-3px);}
 
     @keyframes fadeDown {from{opacity:0;transform:translateY(-50px);}to{opacity:1;transform:translateY(0);}}
     @keyframes fadeUp {from{opacity:0;transform:translateY(50px);}to{opacity:1;transform:translateY(0);}}
+    @keyframes glow {from{text-shadow:0 0 10px #0077ff;}to{text-shadow:0 0 30px #00bbff;}}
 
     /* SECTIONS */
     section {padding:6rem 10%;}
-    section h2 {text-align:center;font-size:2.5rem;margin-bottom:3rem;position:relative;}
+    section h2 {text-align:center;font-size:2.8rem;margin-bottom:2rem;position:relative;animation:fadeUp 1s ease;}
     section h2::after {content:'';display:block;width:60px;height:4px;background:#0077ff;margin:1rem auto;border-radius:2px;}
+    .section-text {text-align:center;max-width:800px;margin:0 auto 3rem auto;font-size:1.2rem;color:#444;line-height:1.8;animation:fadeUp 1.5s ease;}
+
     .grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;}
-    .card {position:relative;overflow:hidden;border-radius:20px;box-shadow:0 10px 20px rgba(0,0,0,0.15);cursor:pointer;}
+    .card {position:relative;overflow:hidden;border-radius:20px;box-shadow:0 10px 25px rgba(0,0,0,0.15);cursor:pointer;transform:translateY(50px);opacity:0;transition:all 1s ease;}
     .card img {width:100%;height:100%;object-fit:cover;transition:transform .5s;}
-    .card:hover img {transform:scale(1.1);}
-    .card span {position:absolute;bottom:0;left:0;right:0;padding:1rem;color:#fff;font-size:1.5rem;background:linear-gradient(to top,rgba(0,0,0,0.7),transparent);}
+    .card:hover img {transform:scale(1.1) rotate(1deg);}
+    .card span {position:absolute;bottom:0;left:0;right:0;padding:1rem;color:#fff;font-size:1.5rem;background:linear-gradient(to top,rgba(0,0,0,0.8),transparent);}
 
     /* CONTACT */
     .contact {text-align:center;}
@@ -51,6 +55,9 @@
     /* FOOTER */
     footer {background:#111;color:#aaa;text-align:center;padding:2rem 1rem;margin-top:4rem;}
     footer span {color:#fff;}
+
+    /* SCROLL ANIMATIONS */
+    .show {opacity:1 !important;transform:translateY(0) !important;}
   </style>
 </head>
 <body>
@@ -77,6 +84,7 @@
   <!-- EUROPA -->
   <section id="europa">
     <h2>Europa</h2>
+    <p class="section-text">Explora la riqueza cultural, la historia milenaria y la diversidad de paisajes que ofrece Europa. Desde las calles románticas de París hasta las colinas de la Toscana, Aventur te lleva a vivir experiencias inolvidables en cada rincón.</p>
     <div class="grid">
       <div class="card"><img src="https://source.unsplash.com/600x400/?paris" alt="Europa"><span>París</span></div>
       <div class="card"><img src="https://source.unsplash.com/600x400/?rome" alt="Europa"><span>Roma</span></div>
@@ -87,6 +95,7 @@
   <!-- AMERICA -->
   <section id="america">
     <h2>América</h2>
+    <p class="section-text">Desde los rascacielos de Nueva York hasta la majestuosidad de Machu Picchu, América ofrece contrastes únicos. Aventur diseña tus viajes para que sientas la emoción, la energía y la magia del continente americano.</p>
     <div class="grid">
       <div class="card"><img src="https://source.unsplash.com/600x400/?newyork" alt="América"><span>New York</span></div>
       <div class="card"><img src="https://source.unsplash.com/600x400/?rio" alt="América"><span>Río de Janeiro</span></div>
@@ -97,49 +106,7 @@
   <!-- EXPERIENCIAS -->
   <section id="experiencias">
     <h2>Experiencias Únicas</h2>
+    <p class="section-text">No solo viajamos, vivimos historias. Desde compartir una comida en una sidrería vasca hasta ascender a las montañas más imponentes, Aventur transforma tus vacaciones en relatos que contarás toda la vida.</p>
     <div class="grid">
       <div class="card"><img src="https://source.unsplash.com/600x400/?wine,basque" alt="Sidrería"><span>Sidrerías vascas</span></div>
       <div class="card"><img src="https://source.unsplash.com/600x400/?mountain,hike" alt="Montaña"><span>Rutas de montaña</span></div>
-      <div class="card"><img src="https://source.unsplash.com/600x400/?food,basque" alt="Gastronomía"><span>Gastronomía auténtica</span></div>
-    </div>
-  </section>
-
-  <!-- CONTACTO -->
-  <section id="contacto" class="contact">
-    <h2>Contacto</h2>
-    <p>¿Listo para tu próxima aventura?</p>
-    <p>Escríbenos: <a href="mailto:aurora_aventur@gmail.com">aurora_aventur@gmail.com</a></p>
-  </section>
-
-  <!-- COOKIES -->
-  <div class="cookies" id="cookies">
-    Usamos cookies para mejorar tu experiencia en Aventur.
-    <button onclick="acceptCookies()">Aceptar</button>
-  </div>
-
-  <!-- FOOTER -->
-  <footer>
-    <p>© <span>Aventur 2025</span> – Todos los derechos reservados</p>
-  </footer>
-
-  <script>
-    function scrollToSection(id){
-      document.getElementById(id).scrollIntoView({behavior:'smooth'});
-    }
-    function acceptCookies(){
-      document.getElementById('cookies').style.display='none';
-    }
-
-    // Animación scroll reveal
-    const sections=document.querySelectorAll('section');
-    window.addEventListener('scroll',()=>{
-      const trigger=window.innerHeight*0.85;
-      sections.forEach(sec=>{
-        const rect=sec.getBoundingClientRect();
-        if(rect.top<trigger){sec.style.opacity=1;sec.style.transform='translateY(0)';}
-      });
-    });
-    sections.forEach(sec=>{sec.style.opacity=0;sec.style.transform='translateY(50px)';sec.style.transition='all 1s ease';});
-  </script>
-</body>
-</html>
